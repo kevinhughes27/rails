@@ -129,6 +129,10 @@ module ActiveRecord
         store_full_sti_class ? name : name.demodulize
       end
 
+      def polymorphic_name
+        base_class.name
+      end
+
       protected
 
       # Returns the class type of the record using the current module as a prefix. So descendants of

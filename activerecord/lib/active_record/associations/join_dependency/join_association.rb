@@ -72,7 +72,7 @@ module ActiveRecord
             end
 
             if reflection.type
-              value = foreign_klass.base_class.name
+              value = foreign_klass.polymorphic_name
               column = klass.columns_hash[reflection.type.to_s]
 
               binds << Relation::QueryAttribute.new(column.name, value, klass.type_for_attribute(column.name))

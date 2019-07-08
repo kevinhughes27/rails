@@ -121,7 +121,7 @@ module ActiveRecord
           @preloaded_records = slices.flat_map do |slice|
             records_for(slice).load(&block)
           end
-          @preloaded_records.group_by do |record| 
+          @preloaded_records.group_by do |record|
             convert_key(record[association_key_name])
           end
         end
@@ -134,7 +134,7 @@ module ActiveRecord
           scope = klass.scope_for_association
 
           if reflection.type
-            scope.where!(reflection.type => model.base_class.sti_name)
+            scope.where!(reflection.type => model.polymorphic_name)
           end
 
           scope.merge!(reflection_scope)
